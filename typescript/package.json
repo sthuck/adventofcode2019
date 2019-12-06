@@ -17,8 +17,8 @@
     "typescript": "^3.2.1"
   },
   "dependencies": {
-    "@types/lodash": "^4.14.118",
-    "lodash": "^4.17.11",
+    "@types/lodash": "^4.14.149",
+    "lodash": "^4.17.15",
     "ts-priority-queue": "^0.1.1"
   }
 }
