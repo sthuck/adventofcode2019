@@ -45,7 +45,6 @@ const opcodesFactory = (inputFn: (title: string) => Promise<number>, outputFn: (
     return currentPos + 2;
   },
   4: async (p: ParameterModes, currentPos: number, arr: number[], memory: (number)[]) => {
-    debugger;
     const a = p[0] === ParameterMode.immidiate ? memory[currentPos + 1] : memory[memory[currentPos + 1]];
     outputFn('output', a);
     return currentPos + 2;
@@ -107,7 +106,6 @@ export const basicRun = async (arr: number[], memory: (string | number)[], input
   const opcodes = opcodesFactory(inputFn, outputFn);
   let currentPos = 0;
   while (currentPos < arr.length) {
-    debugger;
     const {modes, opcode} = parseInstruction(arr[currentPos]);
     log({modes, opcode})
     currentPos = await opcodes[opcode](modes, currentPos, arr, memory)
