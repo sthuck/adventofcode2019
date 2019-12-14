@@ -163,7 +163,6 @@ export const basicRun = async (arr: number[], memory: (string | number)[], input
 }
 
 export const task1 = (input: string) => {
-  debugger;
   const code = parseLine(input.split('\n')[0]);
   const memory = [...code];
   return basicRun(code, memory);
