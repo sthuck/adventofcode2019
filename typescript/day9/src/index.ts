@@ -150,15 +150,23 @@ export const parseInstruction = (fullInstruction: number) => {
   return {opcode, modes}
 }
 
-export const basicRun = async (arr: number[], memory: (string | number)[], inputFn = question, outputFn = console.log) => {
+export const basicRun = async (arr: number[], memory: (string | number)[], inputFn = question, outputFn = console.log, stopHook = null) => {
   const opcodes = opcodesFactory(inputFn, outputFn);
   let currentPos = 0;
   let baseOffset = 0;
+  
   while (currentPos < arr.length) {
     const {modes, opcode} = parseInstruction(arr[currentPos]);
     log({modes, opcode});
     ([currentPos, baseOffset] = await opcodes[opcode](modes, currentPos, arr, memory, baseOffset))
-    log({currentPos})
+    log({currentPos});
+
+    if (stopHook) {
+      const shouldStop = stopHook();
+      if (shouldStop) {
+        break;
+      }
+    }
   }
 }
 
