@@ -1,0 +1,14 @@
+{
+  "name": "day1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "../node_modules/.bin/mocha -r ts-node/register src/**/*.spec.ts",
+    "start": "../node_modules/.bin/ts-node src/runner.ts",
+    "test:watch": "../node_modules/.bin/mocha -w --watch-extensions ts -r ts-node/register src/**/*.spec.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
