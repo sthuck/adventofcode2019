@@ -58,7 +58,7 @@ export const findIntersection = (movesA: Move[], movesB: Move[]) => {
 export const task1 = (input: string[]) => {
   const [moveA, moveB] = parseInput(input);
   let {allIntersectingPoints} = findIntersection(moveA, moveB);
-  debugger;
+  
   return min(allIntersectingPoints
     .filter(f => f !== '0,0').map(strToPoint)
     .map(p => Math.abs(p[0]) + Math.abs(p[1])))

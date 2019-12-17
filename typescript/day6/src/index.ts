@@ -15,7 +15,7 @@ export const buildTree = (orbits: Orbit[]) => {
   tree['COM'] = {name: 'COM', children: [], parent: null}
   Object.values(orbits).forEach(orbit => {
     if (orbit.parent) {
-      debugger;
+      
       tree[orbit.parent].children.push(orbit.name);
     }
   })

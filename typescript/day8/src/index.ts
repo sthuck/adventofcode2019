@@ -42,7 +42,7 @@ export const task1 = (input: string) => {
 }
 
 export const addPixels = (top: number, bottom: number) => {
-  debugger;
+  
   if (top !== 2) {
     return top;
   } else {
@@ -59,7 +59,7 @@ const combineLayers = (a: number[][], b: number[][]) => {
 }
 
 export const task2 = (input: string) => {
-  debugger;
+  
   const layers = parseInput(parseLine(input), 25, 6);
   const megalayer = layers.reduce(combineLayers);
   const text = megalayer.map(row => row.reduce((prev, value) => prev + (value === 2 ? 'x' : value === 1 ? '*' : ' '), ''));

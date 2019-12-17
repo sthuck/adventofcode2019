@@ -76,8 +76,8 @@ export class InfiniteGrid {
     const minX = min(flatten(map(this.painted, vector => (Object.keys(vector).map(n => parseInt(n, 10))))));
     const maxX = max(flatten(map(this.painted, vector => (Object.keys(vector).map(n => parseInt(n, 10))))));
     const s = range(minY, maxY + 1).map(y => range(minX, maxX + 1).map(x => printChar(this.getTile(x, y))).join('')).join('\n');
-    process.stdout.write('\x1b[2J');
-    console.log(s);
+      process.stdout.write('\x1b[2J');
+      console.log(s)
   }
 }
 
@@ -120,6 +120,8 @@ export const task1 = async (input: string) => {
 }
 
 export const task2 = async (input: string) => {
+  if ((process.stdout as any)._handle) (process.stdout as any)._handle.setBlocking(true)
+
   const grid = new InfiniteGrid();
   let gameStarted = false;
   let score = undefined;
@@ -146,7 +148,8 @@ export const task2 = async (input: string) => {
   code[0] = 2;
   // await basicRun(code, code, inputFn, outputHelper.outputFn);
   await basicRun(code, code, inputFn, outputHelper.outputFn, () => {
-    grid.printGrid();
+    if (gameStarted) grid.printGrid();
+    console.log('\n');
     const blockTiles = grid.howManyBlockTiles();
     if (!gameStarted && blockTiles > 250) {
       gameStarted = true;

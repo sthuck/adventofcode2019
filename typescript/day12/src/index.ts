@@ -116,7 +116,7 @@ export const task2 = (input: string[]) => {
       }
     })
   };
-  debugger;
+  
   const gaps = range(3).map(axis => foundRepeat[axis][1] - foundRepeat[axis][0]);
   const lcm1 = gaps[0] * gaps[1] / gcd(gaps[0], gaps[1]);
   const lcm2 = lcm1 * gaps[2] / gcd(lcm1, gaps[2]);

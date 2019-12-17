@@ -23,7 +23,9 @@
     "yargs": "^15.0.2"
   },
   "dependencies": {
+    "@types/chance": "^1.0.7",
     "@types/lodash": "^4.14.149",
+    "chance": "^1.1.4",
     "lodash": "^4.17.15",
     "ts-priority-queue": "^0.1.1"
   }

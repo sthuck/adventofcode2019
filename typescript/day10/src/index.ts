@@ -102,7 +102,7 @@ export const task2 = (input: string[]) => {
   const grid = parseInput(input);
   const {x, y} = findBestPlace(grid);
   let destryoed = [];
-  debugger;
+  
   while (destryoed.length < 200) {
     const allOtherPoints = filter(
       flatten(range(grid.length)

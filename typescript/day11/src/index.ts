@@ -81,7 +81,7 @@ export class InfiniteGrid {
   }
 
   printGrid() {
-    debugger;
+    
     const minY = min((Object.keys(this.painted).map(n => parseInt(n, 10))));
     const maxY = max((Object.keys(this.painted).map(n => parseInt(n, 10))));
     const minX = min(flatten(map(this.painted, vector => (Object.keys(vector).map(n => parseInt(n, 10))))));

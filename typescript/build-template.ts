@@ -10,7 +10,7 @@ const argv = yargs.command('gen <day>', 'generate template', (builder) => {build
 
 
 function wrap(rv: shell.ShellString, msg: string) {
-  debugger;
+  
   if (rv.code !== 0) {
     console.error('code ', rv.code);
     console.error(msg);
@@ -19,7 +19,7 @@ function wrap(rv: shell.ShellString, msg: string) {
 }
 
 async function main(args: any) {
-  debugger;
+  
   const day = args.day;
   wrap(shell.mkdir(`./day${day}`), 'Error creating dir');
   wrap(shell.mkdir(`./day${day}/src`), 'Error creating dir');

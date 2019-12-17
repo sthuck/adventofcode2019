@@ -117,7 +117,7 @@ export const runPhaseSequenceInParallel = async (sequence_: number[] | string, c
 }
 
 export const task2 = async (input: string) => {
-  debugger;
+  
   const code = parseLine(input);
   let maxValue = -Infinity;
   let maxCombination = '';
@@ -125,7 +125,7 @@ export const task2 = async (input: string) => {
   for (const combo of combinations) {
     const result = await runPhaseSequenceInParallel(combo, code);
     if (result > maxValue) {
-      debugger;
+      
       maxCombination = combo;
       maxValue = result;
     }
