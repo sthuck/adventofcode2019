@@ -1,4 +1,4 @@
-import {range} from 'lodash';
+import {range, sum as sum_} from 'lodash';
 
 
 const sum = <T>(arr: T[], howFn: (item: T) => number) => arr.reduce((prev, item) => prev + howFn(item), 0);
@@ -24,6 +24,16 @@ const computeDigit = (inputArr: number[], index: number): number => {
   return Math.abs(sum(inputArr.map((n, i) => n * pattern[i]), n => n) % 10);
 }
 
+const computePhase2 = (inputArr: number[]): number[] => {
+  let nextInputArr = new Array(inputArr.length);
+  let s = sum_(inputArr);
+  for (let i = 0; i < inputArr.length; i++) {
+    nextInputArr[i] = s % 10;
+    s = s - inputArr[i];
+  }
+  return nextInputArr;
+}
+
 export const task1 = (input: string) => {
   let inputArr = parseLine(input);
   range(100).forEach(() => {
@@ -39,12 +49,15 @@ export const task2 = (input: string) => {
   for (let i = 0; i < 10000 * tmp.length; i++) {
     inputArr[i] = tmp[i % tmp.length];
   }
-
+  const offset = pInt(tmp.slice(0, 7).join(''));
+  inputArr = inputArr.slice(offset);
+  console.log(inputArr.length);
+  console.log(offset)
   range(100).forEach((i) => {
     console.log('main iteration', i)
-    inputArr = inputArr.map((_, i) => computeDigit(inputArr, i));
+    inputArr = computePhase2(inputArr);
   });
   const base = pInt(inputArr.slice(0, 8).join(''));
-  return inputArr.slice(base, 8).join('');
+  return base;
 }
 
