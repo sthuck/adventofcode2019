@@ -47,28 +47,36 @@ const cut = (stack: number[], howMuch: number) => {
 }
 
 const dealWithIncrement = (stack: number[], increment: number) => {
+  debugger;
   const newStack = new Array(stack.length);
   let counter = 0;
   for (let i = 0; i < stack.length; i++) {
     newStack[counter] = stack[i];
-    counter += increment;
+    counter = (counter + increment) % stack.length;
   }
   return newStack;
 }
 
-export const task1 = (input: string[]) => {
+export const task1 = (input: string[], size = 10007) => {
+  debugger;
   const actions = input.map(parseLine);
+  let stack = runActions(size, actions);
+  return stack.indexOf(2019);
+}
+
+
+export function runActions(size: number, actions: {type: ActionType; metadata: number;}[]) {
   const fnMap = {
     [ActionType.cut]: cut,
     [ActionType.dealIncrement]: dealWithIncrement,
     [ActionType.dealNew]: dealIntoNewStack,
-  }
-  let stack = range(10007);
+  };
+  let stack = range(size);
   actions.forEach((action, i) => {
     console.log('iteration', i);
-    stack = fnMap[action.type](stack, action.metadata)
-  })
-  return stack[2017];
+    stack = fnMap[action.type](stack, action.metadata);
+  });
+  return stack;
 }
 
 export const task2 = (input: string) => {
